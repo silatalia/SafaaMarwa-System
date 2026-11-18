@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SafaaAndMarwaSystem.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="الصفا والمروة"
+    FlowDirection="RightToLeft"
+    BackgroundColor="#F2F5F9">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="16">
+            <Grid ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Spacing="3">
+                    <Label Text="الصفا والمروة" FontSize="28" FontAttributes="Bold" TextColor="#15324B"/>
+                    <Label Text="نظام إدارة التكعيبات والنقلات" FontSize="13" TextColor="#65788A"/>
+                </VerticalStackLayout>
+                <Label Grid.Column="1" Text="🚚" FontSize="36" VerticalOptions="Center"/>
+            </Grid>
+
+            <Border BackgroundColor="#15324B" StrokeThickness="0" Padding="18">
+                <Border.StrokeShape><RoundRectangle CornerRadius="18"/></Border.StrokeShape>
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="لوحة التحكم" TextColor="#C9D8E5" FontSize="13"/>
+                    <Label x:Name="RecordsCountLabel" Text="0 نقلة مسجلة" TextColor="White" FontSize="25" FontAttributes="Bold"/>
+                    <Label Text="تسجيل بيانات السيارات والمقطورات ومراجعة التكعيب" TextColor="#DCE8F0" FontSize="12"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="تسجيل نقلة جديدة" FontSize="20" FontAttributes="Bold" TextColor="#15324B"/>
+            <Border BackgroundColor="White" Stroke="#E1E8EF" Padding="16">
+                <Border.StrokeShape><RoundRectangle CornerRadius="16"/></Border.StrokeShape>
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="البيانات الأساسية" FontAttributes="Bold" TextColor="#15324B"/>
+                    <DatePicker x:Name="RecordDatePicker" Format="dd/MM/yyyy" />
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                        <Entry x:Name="CarNumberEntry" Placeholder="رقم السيارة (الوش)"/>
+                        <Entry x:Name="CarLettersEntry" Grid.Column="1" Placeholder="حروف السيارة"/>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                        <Entry x:Name="TrailerNumberEntry" Placeholder="رقم المقطورة"/>
+                        <Entry x:Name="TrailerLettersEntry" Grid.Column="1" Placeholder="حروف المقطورة"/>
+                    </Grid>
+                    <Entry x:Name="ClientEntry" Placeholder="اسم العميل"/>
+                    <Entry x:Name="MeasurerEntry" Placeholder="اسم القائم بالتكعيب"/>
+
+                    <Label Text="أبعاد الوش — بالمتر" FontAttributes="Bold" TextColor="#15324B"/>
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="6">
+                        <Entry x:Name="CarLengthEntry" Placeholder="الطول" Keyboard="Numeric"/>
+                        <Entry x:Name="CarWidthEntry" Grid.Column="1" Placeholder="العرض" Keyboard="Numeric"/>
+                        <Entry x:Name="CarHeightEntry" Grid.Column="2" Placeholder="الارتفاع" Keyboard="Numeric"/>
+                    </Grid>
+                    <Label Text="أبعاد المقطورة — بالمتر" FontAttributes="Bold" TextColor="#15324B"/>
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="6">
+                        <Entry x:Name="TrailerLengthEntry" Placeholder="الطول" Keyboard="Numeric"/>
+                        <Entry x:Name="TrailerWidthEntry" Grid.Column="1" Placeholder="العرض" Keyboard="Numeric"/>
+                        <Entry x:Name="TrailerHeightEntry" Grid.Column="2" Placeholder="الارتفاع" Keyboard="Numeric"/>
+                    </Grid>
+                    <Label Text="بيانات إضافية" FontAttributes="Bold" TextColor="#15324B"/>
+                    <Entry x:Name="ExtraPositionEntry" Placeholder="مكان الزيادة / الوضع الإضافي"/>
+                    <Entry x:Name="DeductionEntry" Placeholder="الخصم المخصص (م³)" Keyboard="Numeric"/>
+                    <Editor x:Name="ExtraNotesEditor" Placeholder="ملاحظات على النقلة" AutoSize="TextChanges" HeightRequest="80"/>
+                    <Button Text="حفظ النقلة" Clicked="OnSaveClicked" BackgroundColor="#078F83" TextColor="White" CornerRadius="12"/>
+                    <Button Text="إنشاء نسخة احتياطية" Clicked="OnBackupClicked" BackgroundColor="#E8EEF4" TextColor="#15324B" CornerRadius="12"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="أحدث النقلات" FontSize="20" FontAttributes="Bold" TextColor="#15324B" VerticalOptions="Center"/>
+                <Button Grid.Column="1" Text="تحديث" Clicked="OnRefreshClicked" FontSize="12" Padding="12,4" BackgroundColor="#DDE8F0" TextColor="#15324B"/>
+            </Grid>
+            <VerticalStackLayout x:Name="RecordsList" Spacing="8"/>
+            <Label Text="تم الإعداد بواسطة سمير صلاح" HorizontalTextAlignment="Center" TextColor="#7A8998" FontSize="12"/>
+            <Label Text="صدقة جارية على روح الوالد أ/ أحمد صلاح — برجاء الدعاء له" HorizontalTextAlignment="Center" TextColor="#7A8998" FontSize="11"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
